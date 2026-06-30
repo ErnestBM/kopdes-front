@@ -38,28 +38,36 @@ export async function createDebtAction(
   redirect(`/debts/${debtorId}`);
 }
 
-async function transition(recordId: string, counterpartyId: string, path: string) {
+async function recordTransition(recordId: string, counterpartyId: string, path: string) {
   await apiFetch(`/debts/${recordId}/${path}`, { method: "POST" });
   revalidatePath("/");
   revalidatePath(`/debts/${counterpartyId}`);
 }
 
 export async function approveDebtAction(recordId: string, counterpartyId: string) {
-  await transition(recordId, counterpartyId, "approve");
+  await recordTransition(recordId, counterpartyId, "approve");
 }
 
 export async function rejectDebtAction(recordId: string, counterpartyId: string) {
-  await transition(recordId, counterpartyId, "reject");
+  await recordTransition(recordId, counterpartyId, "reject");
 }
 
-export async function confirmPaymentAction(recordId: string, counterpartyId: string) {
-  await transition(recordId, counterpartyId, "confirm-payment");
+// These act on the net balance with a counterparty (can settle multiple records
+// at once), not on a single record id -- see backend routes/debts.ts.
+async function counterpartyTransition(counterpartyId: string, path: string) {
+  await apiFetch(`/debts/${counterpartyId}/${path}`, { method: "POST" });
+  revalidatePath("/");
+  revalidatePath(`/debts/${counterpartyId}`);
 }
 
-export async function approvePaymentAction(recordId: string, counterpartyId: string) {
-  await transition(recordId, counterpartyId, "approve-payment");
+export async function confirmPaymentAction(counterpartyId: string) {
+  await counterpartyTransition(counterpartyId, "confirm-payment");
 }
 
-export async function rejectPaymentAction(recordId: string, counterpartyId: string) {
-  await transition(recordId, counterpartyId, "reject-payment");
+export async function approvePaymentAction(counterpartyId: string) {
+  await counterpartyTransition(counterpartyId, "approve-payment");
+}
+
+export async function rejectPaymentAction(counterpartyId: string) {
+  await counterpartyTransition(counterpartyId, "reject-payment");
 }

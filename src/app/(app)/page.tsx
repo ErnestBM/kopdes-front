@@ -48,22 +48,19 @@ export default async function DashboardPage() {
             ))}
 
             {inbox.pendingPaymentApprovals.map((item) => (
-              <div key={item.id} className="rounded-xl border border-sky-200 bg-sky-50 p-4">
+              <div key={item.counterparty.id} className="rounded-xl border border-sky-200 bg-sky-50 p-4">
                 <p className="text-sm text-neutral-600">
-                  <span className="font-semibold text-neutral-900">{item.debtor?.name}</span> konfirmasi
+                  <span className="font-semibold text-neutral-900">{item.counterparty.name}</span> konfirmasi
                   sudah membayar
                 </p>
                 <p className="mt-1 text-lg font-bold text-neutral-900">{formatRupiah(item.amount)}</p>
-                <p className="text-sm text-neutral-600">
-                  {item.title} &middot; {formatDate(item.date)}
-                </p>
                 <div className="mt-3 flex gap-2">
-                  <form action={approvePaymentAction.bind(null, item.id, item.debtor!.id)}>
+                  <form action={approvePaymentAction.bind(null, item.counterparty.id)}>
                     <button className="rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white">
                       Setujui Pembayaran
                     </button>
                   </form>
-                  <form action={rejectPaymentAction.bind(null, item.id, item.debtor!.id)}>
+                  <form action={rejectPaymentAction.bind(null, item.counterparty.id)}>
                     <button className="rounded-full border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700">
                       Belum Diterima
                     </button>

@@ -13,12 +13,21 @@ export interface PublicUser {
   name: string;
   role: Role;
   mustChangePassword: boolean;
+  bankName: string | null;
+  bankAccountName: string | null;
+  bankAccountNumber: string | null;
 }
 
 export interface SimpleUser {
   id: string;
   name: string;
   username: string;
+}
+
+export interface CounterpartyProfile extends SimpleUser {
+  bankName: string | null;
+  bankAccountName: string | null;
+  bankAccountNumber: string | null;
 }
 
 export interface DebtRecord {
@@ -45,14 +54,24 @@ export interface InboxItem extends DebtRecord {
   debtor?: SimpleUser;
 }
 
+export interface PendingPaymentApproval {
+  counterparty: SimpleUser;
+  amount: number;
+}
+
 export interface DebtSummaryResponse {
   summary: CounterpartyNet[];
   inbox: {
     pendingApprovals: InboxItem[];
-    pendingPaymentApprovals: InboxItem[];
+    pendingPaymentApprovals: PendingPaymentApproval[];
   };
 }
 
-export interface AdminUser extends PublicUser {
+export interface AdminUser {
+  id: string;
+  username: string;
+  name: string;
+  role: Role;
+  mustChangePassword: boolean;
   createdAt: string;
 }

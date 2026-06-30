@@ -16,8 +16,11 @@ export async function changePasswordAction(
   const oldPassword = String(formData.get("oldPassword") ?? "");
   const newPassword = String(formData.get("newPassword") ?? "");
   const confirmPassword = String(formData.get("confirmPassword") ?? "");
+  const bankName = String(formData.get("bankName") ?? "").trim();
+  const bankAccountName = String(formData.get("bankAccountName") ?? "").trim();
+  const bankAccountNumber = String(formData.get("bankAccountNumber") ?? "").trim();
 
-  if (!oldPassword || !newPassword) {
+  if (!oldPassword || !newPassword || !bankName || !bankAccountName || !bankAccountNumber) {
     return { error: "Lengkapi semua field" };
   }
   if (newPassword.length < 6) {
@@ -31,7 +34,7 @@ export async function changePasswordAction(
   try {
     const data = await apiFetch<{ token: string }>("/auth/change-password", {
       method: "POST",
-      body: JSON.stringify({ oldPassword, newPassword }),
+      body: JSON.stringify({ oldPassword, newPassword, bankName, bankAccountName, bankAccountNumber }),
     });
     token = data.token;
   } catch (e) {
