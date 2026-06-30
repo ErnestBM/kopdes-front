@@ -19,7 +19,7 @@ export default function AddUserForm() {
           name="name"
           type="text"
           required
-          className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-base focus:border-neutral-500 focus:outline-none"
+          className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 focus:border-neutral-500 focus:outline-none"
         />
       </div>
 
@@ -35,7 +35,7 @@ export default function AddUserForm() {
           pattern="[a-z0-9]+"
           title="Huruf kecil dan angka saja, tanpa spasi"
           required
-          className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-base focus:border-neutral-500 focus:outline-none"
+          className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 focus:border-neutral-500 focus:outline-none"
         />
         <p className="mt-1 text-xs text-neutral-500">Password awal otomatis: username + &quot;123&quot;</p>
       </div>
@@ -48,7 +48,7 @@ export default function AddUserForm() {
           id="role"
           name="role"
           defaultValue="USER"
-          className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-base focus:border-neutral-500 focus:outline-none"
+          className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 focus:border-neutral-500 focus:outline-none"
         >
           <option value="USER">User</option>
           <option value="ADMIN">Admin</option>

@@ -26,7 +26,7 @@ export default function ChangePasswordPage() {
             type="password"
             autoComplete="current-password"
             required
-            className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-base focus:border-neutral-500 focus:outline-none"
+            className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 focus:border-neutral-500 focus:outline-none"
           />
         </div>
 
@@ -41,7 +41,7 @@ export default function ChangePasswordPage() {
             autoComplete="new-password"
             minLength={6}
             required
-            className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-base focus:border-neutral-500 focus:outline-none"
+            className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 focus:border-neutral-500 focus:outline-none"
           />
         </div>
 
@@ -56,7 +56,7 @@ export default function ChangePasswordPage() {
             autoComplete="new-password"
             minLength={6}
             required
-            className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-base focus:border-neutral-500 focus:outline-none"
+            className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 focus:border-neutral-500 focus:outline-none"
           />
         </div>
 

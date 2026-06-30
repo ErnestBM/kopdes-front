@@ -21,7 +21,7 @@ export default function NewDebtForm({ users }: { users: SimpleUser[] }) {
           name="debtorId"
           required
           defaultValue=""
-          className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-base focus:border-neutral-500 focus:outline-none"
+          className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 focus:border-neutral-500 focus:outline-none"
         >
           <option value="" disabled>
             Pilih orang
@@ -46,7 +46,7 @@ export default function NewDebtForm({ users }: { users: SimpleUser[] }) {
           min={1}
           step={1}
           required
-          className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-base focus:border-neutral-500 focus:outline-none"
+          className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 focus:border-neutral-500 focus:outline-none"
         />
       </div>
 
@@ -60,7 +60,7 @@ export default function NewDebtForm({ users }: { users: SimpleUser[] }) {
           type="text"
           placeholder="cth. Pinjam buat makan"
           required
-          className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-base focus:border-neutral-500 focus:outline-none"
+          className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 focus:border-neutral-500 focus:outline-none"
         />
       </div>
 
@@ -74,7 +74,7 @@ export default function NewDebtForm({ users }: { users: SimpleUser[] }) {
           type="date"
           required
           defaultValue={today}
-          className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-base focus:border-neutral-500 focus:outline-none"
+          className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base text-neutral-900 focus:border-neutral-500 focus:outline-none"
         />
       </div>
 
